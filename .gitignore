@@ -1,0 +1,5 @@
+*~
+target/
+.kateproject.d/
+Cargo.lock
+doc/
