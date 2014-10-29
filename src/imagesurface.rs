@@ -58,7 +58,7 @@ impl ImageSurface {
 }
 
 impl Surface for ImageSurface {
-    unsafe fn surface_ptr(&self) -> *mut cairo_surface_t {
+    fn surface_ptr(&mut self) -> *mut cairo_surface_t {
         self.cairo_surface
     }
 

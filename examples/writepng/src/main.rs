@@ -5,14 +5,14 @@ extern crate cairo;
 use cairo::{ Context, ImageSurface };
 
 fn main() {
-    let surface = ImageSurface::new(cairo::ARGB32, 256, 256);
-    let context = Context::new(&surface);
+    let mut surface = ImageSurface::new(cairo::ARGB32, 256, 256);
+    let mut context = Context::new(&mut surface);
 
-    context.set_source_rgb(0., 0., 0.);
-    context.set_line_width(1.);
+    context.set_source_rgb(0.0, 0.0, 0.0);
+    context.set_line_width(1.0);
 
-    context.move_to(0., 0.);
-    context.line_to(256., 256.);
+    context.move_to(0.0, 0.0);
+    context.line_to(256.0, 256.0);
 
     context.stroke();
 
