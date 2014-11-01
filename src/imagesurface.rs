@@ -25,14 +25,14 @@ pub struct ImageSurface {
 }
 
 impl ImageSurface {
-    pub fn new(format: Format, width: i32, height: i32) -> ImageSurface {
+    pub fn new(format: Format, width: i32, height: i32) -> Result<ImageSurface, &'static str> {
         unsafe {
             let cairo_surface = cairo_image_surface_create(format as i32, width, height);
-            if cairo_surface.is_null() {
-                fail!("couldn't create Cairo image surface");
+            if cairo_surface.is_not_null() {
+                Ok(ImageSurface { cairo_surface : cairo_surface })
+            } else {
+                Err("Could not create image surface.")
             }
-            assert!(cairo_surface.is_not_null());
-            ImageSurface { cairo_surface: cairo_surface }
         }
     }
 

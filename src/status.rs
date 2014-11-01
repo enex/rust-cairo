@@ -53,7 +53,7 @@ impl Status {
         let status = unsafe { CString::new(status, true) };
         match status.as_str() {
             Some(stat) => stat.into_string(),
-            None => fail!("Error creating string from status {}", this)
+            None => panic!("Error creating string from status {}", this)
         }
     }
 }
