@@ -7,15 +7,18 @@ use operator::Operator;
 use surface::Surface;
 
 pub struct Context {
-    pub cairo  : *mut cairo_t,
+    cairo  : *mut cairo_t,
 }
 
 impl Context {
-    pub fn new(surface : &mut Surface) -> Context {
+    pub fn new(surface : &mut Surface) -> Result<Context, &'static str> {
         unsafe {
             let cairo = cairo_create(surface.surface_ptr());
-            assert!(cairo.is_not_null());
-            Context { cairo : cairo }
+            if cairo.is_not_null() {
+                Ok(Context { cairo : cairo })
+            } else {
+                Err("Could not create cairo context")
+            }
         }
     }
 
