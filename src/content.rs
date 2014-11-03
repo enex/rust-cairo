@@ -1,7 +1,9 @@
+use ffi::*;
+
 #[repr(u32)]
 #[deriving(FromPrimitive, Show, Copy)]
 pub enum Content {
-    Color = 4096,
-    Alpha = 8192,
-    ColorAlpha = 12288,
+    Color = CAIRO_CONTENT_COLOR,
+    Alpha = CAIRO_CONTENT_ALPHA,
+    ColorAlpha = CAIRO_CONTENT_COLOR_ALPHA,
 }

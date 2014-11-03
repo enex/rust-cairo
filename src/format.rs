@@ -1,12 +1,14 @@
+use ffi::*;
+
 #[repr(i32)]
 #[deriving(FromPrimitive, Show, Copy)]
 #[allow(non_camel_case_types)]
 pub enum Format {
-    Invalid = -1,
-    ARGB32 = 0,
-    RGB24 = 1,
-    A8 = 2,
-    A1 = 3,
-    RGB16_565 = 4,
-    RGB30 = 5
+    Invalid = CAIRO_FORMAT_INVALID,
+    ARGB32 = CAIRO_FORMAT_ARGB32,
+    RGB24 = CAIRO_FORMAT_RGB24,
+    A8 = CAIRO_FORMAT_A8,
+    A1 = CAIRO_FORMAT_A1,
+    RGB16_565 = CAIRO_FORMAT_RGB16_565,
+    RGB30 = CAIRO_FORMAT_RGB30
 }

@@ -1,11 +1,13 @@
+use ffi::*;
+
 #[repr(u32)]
 #[deriving(FromPrimitive, Show, Copy)]
 pub enum Antialias {
-    Default = 0,
-    None = 1,
-    Gray = 2,
-    Subpixel = 3,
-    Fast = 4,
-    Good = 5,
-    Best = 6
+    Default = CAIRO_ANTIALIAS_DEFAULT,
+    None = CAIRO_ANTIALIAS_NONE,
+    Gray = CAIRO_ANTIALIAS_GRAY,
+    Subpixel = CAIRO_ANTIALIAS_SUBPIXEL,
+    Fast = CAIRO_ANTIALIAS_FAST,
+    Good = CAIRO_ANTIALIAS_GOOD,
+    Best = CAIRO_ANTIALIAS_BEST,
 }

@@ -1,7 +1,9 @@
+use ffi::*;
+
 #[repr(u32)]
 #[deriving(FromPrimitive, Show, Copy)]
 pub enum LineCap {
-    Butt = 0,
-    Round = 1,
-    Square = 2
+    Butt = CAIRO_LINE_CAP_BUTT,
+    Round = CAIRO_LINE_CAP_ROUND,
+    Square = CAIRO_LINE_CAP_SQUARE,
 }
