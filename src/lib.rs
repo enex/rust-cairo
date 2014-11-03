@@ -16,6 +16,7 @@ pub use pattern::*;
 pub use status::*;
 pub use surface::*;
   pub use imagesurface::*;
+  pub use xlibsurface::*;
 
 mod antialias;
 mod content;
@@ -30,6 +31,7 @@ mod pattern;
 mod status;
 mod surface;
   mod imagesurface;
+  mod xlibsurface;
 
 #[allow(non_camel_case_types)]
 pub mod ffi;
