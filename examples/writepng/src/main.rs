@@ -1,5 +1,3 @@
-#![feature(if_let)]
-
 extern crate cairo;
 
 use cairo::{ Context, ImageSurface };

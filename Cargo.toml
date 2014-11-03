@@ -18,7 +18,3 @@ git = "https://github.com/servo/rust-fontconfig"
 [[example]]
 name = "writepng"
 path = "examples/writepng/src/main.rs"
-
-[[example]]
-name = "xlib"
-path = "examples/xlib/src/main.rs"

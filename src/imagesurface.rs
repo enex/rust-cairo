@@ -19,17 +19,19 @@ use status::Status;
 use status::{ InvalidStatus, Success };
 use surface::Surface;
 
-/// TODO Write this doc
+///
+///
+/// Internally, this wraps a ```*mut cairo_surface_t```
 pub struct ImageSurface {
-    cairo_surface : *mut cairo_surface_t,
+    ptr : *mut cairo_surface_t,
 }
 
 impl ImageSurface {
     pub fn new(format: Format, width: i32, height: i32) -> Result<ImageSurface, &'static str> {
         unsafe {
-            let cairo_surface = cairo_image_surface_create(format as i32, width, height);
-            if cairo_surface.is_not_null() {
-                Ok(ImageSurface { cairo_surface : cairo_surface })
+            let ptr = cairo_image_surface_create(format as i32, width, height);
+            if ptr.is_not_null() {
+                Ok(ImageSurface { ptr : ptr })
             } else {
                 Err("Could not create image surface.")
             }
@@ -38,7 +40,7 @@ impl ImageSurface {
 
     pub fn stride(&self) -> i32 {
         unsafe {
-            cairo_image_surface_get_stride(self.cairo_surface)
+            cairo_image_surface_get_stride(self.ptr)
         }
     }
 
@@ -46,7 +48,7 @@ impl ImageSurface {
         let filename = filename.to_c_str();
         let filename = filename.as_ptr();
         let status = unsafe {
-            cairo_surface_write_to_png(self.cairo_surface, filename)
+            cairo_surface_write_to_png(self.ptr, filename)
         };
         let status : Option<Status> = FromPrimitive::from_u32(status);
         match status {
@@ -59,18 +61,18 @@ impl ImageSurface {
 
 impl Surface for ImageSurface {
     fn surface_ptr(&mut self) -> *mut cairo_surface_t {
-        self.cairo_surface
+        self.ptr
     }
 
     fn width(&self) -> i32 {
         unsafe {
-            cairo_image_surface_get_width(self.cairo_surface)
+            cairo_image_surface_get_width(self.ptr)
         }
     }
 
     fn height(&self) -> i32 {
         unsafe {
-            cairo_image_surface_get_height(self.cairo_surface)
+            cairo_image_surface_get_height(self.ptr)
         }
     }
 }
@@ -78,9 +80,8 @@ impl Surface for ImageSurface {
 impl Clone for ImageSurface {
     fn clone(&self) -> ImageSurface {
         unsafe {
-            cairo_surface_reference(self.cairo_surface);
-            assert!(!self.cairo_surface.is_null());
-            ImageSurface { cairo_surface: self.cairo_surface }
+            cairo_surface_reference(self.ptr);
+            ImageSurface { ptr : self.ptr}
         }
     }
 }
@@ -89,7 +90,7 @@ impl Clone for ImageSurface {
 impl Drop for ImageSurface {
     fn drop(&mut self) {
         unsafe {
-            cairo_surface_destroy(self.cairo_surface);
+            cairo_surface_destroy(self.ptr);
         }
     }
 }
