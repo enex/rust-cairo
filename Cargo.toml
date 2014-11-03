@@ -16,5 +16,9 @@ git = "https://github.com/servo/rust-fontconfig"
 
 
 [[example]]
-name = "writepng"
-path = "examples/writepng/src/main.rs"
+name = "write-to-image"
+path = "examples/write-to-image/main.rs"
+
+[[example]]
+name = "cairo-xlib"
+path = "examples/cairo-xlib/main.rs"

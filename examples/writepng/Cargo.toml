@@ -1,8 +1,0 @@
-[package]
-
-name = "writepng"
-version = "0.0.1"
-authors = ["Cedrick Cooke <cedrickc@zoho.com>"]
-
-[dependencies.cairo]
-path = "../../"
