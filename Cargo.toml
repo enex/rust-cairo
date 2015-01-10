@@ -4,21 +4,6 @@ name = "cairo"
 version = "0.0.1"
 authors = ["Cedrick Cooke <cedrickc@zoho.com>"]
 
-
-[dependencies.xlib]
-git = "https://github.com/servo/rust-xlib"
-
-[dependencies.freetype]
-git = "https://github.com/servo/rust-freetype"
-
-[dependencies.fontconfig]
-git = "https://github.com/servo/rust-fontconfig"
-
-
 [[example]]
 name = "write-to-image"
 path = "examples/write-to-image/main.rs"
-
-[[example]]
-name = "cairo-xlib"
-path = "examples/cairo-xlib/main.rs"
