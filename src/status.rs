@@ -1,8 +1,8 @@
-use std::c_str::CString;
 use ffi::*;
+use std;
 
 #[repr(u32)]
-#[deriving(FromPrimitive, Show, Copy)]
+#[derive(FromPrimitive, Show, Copy)]
 pub enum Status {
     Success = CAIRO_STATUS_SUCCESS,
     NoMemory = CAIRO_STATUS_NO_MEMORY,
@@ -50,10 +50,7 @@ impl Status {
     pub fn to_string(&self) -> String {
         let this = *self as u32;
         let status = unsafe { cairo_status_to_string(this) };
-        let status = unsafe { CString::new(status, true) };
-        match status.as_str() {
-            Some(stat) => stat.into_string(),
-            None => panic!("Error creating string from status {}", this)
-        }
+        let status = unsafe { std::ffi::c_str_to_bytes(&status) };
+        std::str::from_utf8(status).unwrap().to_string()
     }
 }

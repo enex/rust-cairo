@@ -1,6 +1,6 @@
 use ffi::*;
 
-/// 
+///
 ///
 /// Internally, this wraps a ```*mut cairo_pattern_t```
 pub struct Pattern {
@@ -9,7 +9,7 @@ pub struct Pattern {
 
 impl Pattern {
     pub fn new_from_ptr(ptr : *mut cairo_pattern_t) -> Pattern {
-        assert!(ptr.is_not_null());
+        assert!(!ptr.is_null());
         Pattern { ptr : ptr }
     }
 

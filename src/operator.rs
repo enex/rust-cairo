@@ -1,7 +1,7 @@
 use ffi::*;
 
 #[repr(u32)]
-#[deriving(FromPrimitive, Show, Copy)]
+#[derive(FromPrimitive, Show, Copy)]
 pub enum Operator {
     Clear = CAIRO_OPERATOR_CLEAR,
     Source = CAIRO_OPERATOR_SOURCE,

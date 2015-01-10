@@ -1,7 +1,7 @@
 use ffi::*;
 
 #[repr(i32)]
-#[deriving(FromPrimitive, Show, Copy)]
+#[derive(FromPrimitive, Show, Copy)]
 #[allow(non_camel_case_types)]
 pub enum Format {
     Invalid = CAIRO_FORMAT_INVALID,

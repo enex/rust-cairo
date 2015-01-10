@@ -20,10 +20,10 @@ impl Context {
     pub fn new(surface : &mut Surface) -> Result<Context, &'static str> {
         unsafe {
             let cr = cairo_create(surface.surface_ptr());
-            if cr.is_not_null() {
-                Ok(Context { ptr : cr })
+            if cr.is_null() {
+                Err("Could not create cairo context")    
             } else {
-                Err("Could not create cairo context")
+                Ok(Context { ptr : cr })
             }
         }
     }

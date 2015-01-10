@@ -1,7 +1,7 @@
 use ffi::*;
 
 #[repr(u32)]
-#[deriving(FromPrimitive, Show, Copy)]
+#[derive(FromPrimitive, Show, Copy)]
 pub enum Antialias {
     Default = CAIRO_ANTIALIAS_DEFAULT,
     None = CAIRO_ANTIALIAS_NONE,

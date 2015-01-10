@@ -1,7 +1,4 @@
-#![feature(globs)]
-
 extern crate libc;
-extern crate xlib;
 
 pub use antialias::*;
 pub use content::*;
@@ -13,10 +10,9 @@ pub use linejoin::*;
 pub use matrix::*;
 pub use operator::*;
 pub use pattern::*;
-pub use status::*;
+pub use status::Status;
 pub use surface::*;
-  pub use imagesurface::*;
-  pub use xlibsurface::*;
+pub use imagesurface::*;
 
 mod antialias;
 mod content;
@@ -30,8 +26,7 @@ mod operator;
 mod pattern;
 mod status;
 mod surface;
-  mod imagesurface;
-  mod xlibsurface;
+mod imagesurface;
 
 #[allow(non_camel_case_types)]
 pub mod ffi;

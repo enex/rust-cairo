@@ -1,11 +1,9 @@
 use std::mem;
 use ffi::cairo_matrix_t;
 
-
-///
-///
 /// Internally, this should be identical to a ```cairo_matrix_t```
 #[repr(C)]
+#[derive(Copy)]
 pub struct Matrix {
     pub xx : f64,
     pub yx : f64,
